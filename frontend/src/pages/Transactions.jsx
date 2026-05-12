@@ -7,7 +7,7 @@ const Transactions = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  // Form State
+  // Form State 
   const [formData, setFormData] = useState({
     title: '', amount: '', categoryId: '', type: 'Expense', date: new Date().toISOString().split('T')[0], note: ''
   });
