@@ -190,7 +190,13 @@ const Transactions = () => {
             </tr>
           </thead>
           <tbody>
-            {transactions.map(t => (
+            {[...transactions]
+              .sort((a, b) => {
+                const dateDiff = new Date(b.date) - new Date(a.date);
+                if (dateDiff !== 0) return dateDiff;
+                return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+              })
+              .map(t => (
               <tr key={t._id}>
                 <td>{new Date(t.date).toLocaleDateString()}</td>
                 <td style={{ fontWeight: '500' }}>{t.title}</td>

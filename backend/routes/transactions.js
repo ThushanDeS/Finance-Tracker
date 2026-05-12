@@ -156,7 +156,9 @@ router.get('/', async (req, res) => {
     if (categoryId) query.categoryId = categoryId;
     if (type) query.type = type;
 
-    const transactions = await Transaction.find(query).populate('categoryId').sort({ date: -1 });
+    const transactions = await Transaction.find(query)
+      .populate('categoryId')
+      .sort({ date: -1, createdAt: -1 });
     res.json(transactions);
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
