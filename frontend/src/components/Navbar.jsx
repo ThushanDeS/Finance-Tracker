@@ -79,11 +79,11 @@ const Navbar = () => {
         <div style={{ position: 'relative' }}>
           <button
             type="button"
-            className="notif-btn"
+            className={`notif-btn${budgetAlerts.length > 0 ? ' notif-btn-alert' : ''}`}
             onClick={handleNotificationClick}
             aria-label="Budget notifications"
           >
-            <Bell size={20} color="#fff" />
+            <Bell size={20} />
             {budgetAlerts.length > 0 && (
               <span
                 className="notif-count"
