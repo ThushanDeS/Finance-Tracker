@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { LayoutDashboard, ReceiptText, Wallet, Settings, LogOut, User as UserIcon, Bell, AlertTriangle, Repeat } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import api from '../api/api';
+import Logo from './Logo';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -64,10 +65,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <div className="brand-logo">FT</div>
-        <div className="brand">FINANCE<span style={{ opacity: 0.75, marginLeft: 6 }}>TRACKER</span></div>
-      </div>
+      <Logo />
 
       <div className="nav-links">
         <Link to="/" className="nav-link"><LayoutDashboard size={18} /><span className="link-text">Dashboard</span></Link>

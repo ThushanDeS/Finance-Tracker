@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+import Logo from '../components/Logo';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -21,6 +22,9 @@ const Login = () => {
 
   return (
     <div className="card card-centered">
+      <div style={{ marginBottom: '1.4rem' }}>
+        <Logo centered />
+      </div>
       <h2 style={{ marginBottom: '1.25rem', textAlign: 'center' }}>Welcome Back</h2>
       <form onSubmit={handleSubmit} className="form">
         {error && <div style={{ color: 'var(--danger)', fontSize: '0.9rem' }}>{error}</div>}

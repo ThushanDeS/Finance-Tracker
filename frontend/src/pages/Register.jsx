@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+import Logo from '../components/Logo';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -21,6 +22,9 @@ const Register = () => {
 
   return (
     <div style={{ maxWidth: '400px', margin: '4rem auto' }} className="card glass">
+      <div style={{ marginBottom: '1.4rem' }}>
+        <Logo centered />
+      </div>
       <h2 style={{ marginBottom: '1.5rem', textAlign: 'center' }}>Create Account</h2>
       <form onSubmit={handleSubmit} className="flex" style={{ flexDirection: 'column', gap: '1rem' }}>
         {error && <div style={{ color: 'var(--danger)', fontSize: '0.9rem' }}>{error}</div>}
