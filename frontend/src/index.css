@@ -63,7 +63,7 @@ input, select, textarea {
 
 input:focus {
   border-color: var(--primary);
-  ring: 2px var(--primary);
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
 }
 
 .container {
@@ -152,7 +152,7 @@ td {
 
 /* Navbar */
 .navbar {
-  background: var(--nav-bg);
+  background: linear-gradient(135deg, rgba(37,99,235,1) 0%, rgba(59,130,246,0.95) 40%, rgba(99,102,241,0.9) 100%);
   color: var(--nav-text);
   height: 64px;
   padding: 0 1.25rem;
@@ -164,6 +164,13 @@ td {
   top: 0;
   z-index: 60;
   border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* When on auth pages, make navbar match auth left gradient */
+.navbar.navbar-auth {
+  /* keep same gradient for explicit auth-route class */
+  background: linear-gradient(135deg, rgba(37,99,235,1) 0%, rgba(59,130,246,0.95) 40%, rgba(99,102,241,0.9) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .brand {
@@ -227,13 +234,38 @@ td {
 }
 
 .logout-btn {
-  background: transparent;
-  color: #fca5a5;
-  padding: 0.35rem;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  padding: 0.45rem 0.6rem;
   display: inline-flex;
   align-items: center;
-  border-radius: 6px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
 }
+
+/* Notification button (bell) styling */
+.nav-links .notif-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+}
+.nav-links .notif-btn:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+.nav-links .notif-btn svg { color: inherit; }
+
+/* notification count */
+.notif-count { font-size: 0.78rem; padding: 0 6px; min-width: 20px; height: 20px; line-height: 20px; border-radius: 999px; }
+
+/* profile badge contrast */
+.profile-badge { background: rgba(255,255,255,0.12); color: #fff; }
 
 @media (max-width: 720px) {
   .container { padding: 1rem; }
@@ -258,8 +290,62 @@ td {
 
 .card-centered {
   max-width: 420px;
-  margin: 4rem auto;
 }
+
+/* Auth split layout */
+.auth-page {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  min-height: calc(100vh - 64px);
+}
+
+.auth-left {
+  background: linear-gradient(135deg, rgba(37,99,235,1) 0%, rgba(59,130,246,0.95) 40%, rgba(99,102,241,0.9) 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3.5rem 4rem;
+  gap: 1rem;
+}
+
+.auth-left .brand-logo { background: #fff; color: var(--nav-bg); }
+.auth-left .brand { color: #fff; }
+.auth-hero {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.05;
+  max-width: 36rem;
+}
+.auth-sub {
+  color: rgba(255,255,255,0.9);
+  max-width: 36rem;
+  font-weight: 500;
+}
+
+.auth-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(180deg, var(--bg-main), #f8fafc);
+}
+
+.card.auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+  .auth-page { grid-template-columns: 1fr; }
+  .auth-left { padding: 2.5rem; align-items: center; text-align: center; }
+  .auth-right { padding: 1.25rem; }
+}
+/* layout helpers for centered cards elsewhere */
+.centered-container { margin: 4rem auto; }
 
 .stat-title { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
 .stat-number { font-size: 1.75rem; font-weight: 800; }

@@ -21,26 +21,35 @@ const Login = () => {
   };
 
   return (
-    <div className="card card-centered">
-      <div style={{ marginBottom: '1.4rem' }}>
-        <Logo centered />
+    <div className="auth-page">
+      <div className="auth-left">
+        <Logo />
+        <div className="auth-hero">Manage your money, effortlessly.</div>
+        <div className="auth-sub">Track expenses, budgets, and recurring payments with clear insights.</div>
       </div>
-      <h2 style={{ marginBottom: '1.25rem', textAlign: 'center' }}>Welcome Back</h2>
-      <form onSubmit={handleSubmit} className="form">
-        {error && <div style={{ color: 'var(--danger)', fontSize: '0.9rem' }}>{error}</div>}
-        <div className="form-row">
-          <label>Email</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+      <div className="auth-right">
+        <div className="card auth-card">
+          <div style={{ marginBottom: '1.4rem' }}>
+            <Logo centered />
+          </div>
+          <h2 style={{ marginBottom: '1.25rem', textAlign: 'center' }}>Welcome Back</h2>
+          <form onSubmit={handleSubmit} className="form">
+            {error && <div style={{ color: 'var(--danger)', fontSize: '0.9rem' }}>{error}</div>}
+            <div className="form-row">
+              <label>Email</label>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            </div>
+            <div className="form-row">
+              <label>Password</label>
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            </div>
+            <button type="submit" className="btn-primary">Login</button>
+          </form>
+          <p style={{ marginTop: '1.25rem', textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+            Don't have an account? <Link to="/register" style={{ color: 'var(--primary)' }}>Register</Link>
+          </p>
         </div>
-        <div className="form-row">
-          <label>Password</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        <button type="submit" className="btn-primary">Login</button>
-      </form>
-      <p style={{ marginTop: '1.25rem', textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-        Don't have an account? <Link to="/register" style={{ color: 'var(--primary)' }}>Register</Link>
-      </p>
+      </div>
     </div>
   );
 };

@@ -79,44 +79,18 @@ const Navbar = () => {
         <div style={{ position: 'relative' }}>
           <button
             type="button"
+            className="notif-btn"
             onClick={handleNotificationClick}
             aria-label="Budget notifications"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '36px',
-              height: '36px',
-              borderRadius: '999px',
-              background: budgetAlerts.length > 0 ? 'rgba(239, 68, 68, 0.1)' : 'transparent',
-              color: budgetAlerts.length > 0 ? 'var(--danger)' : 'var(--text-muted)',
-              border: 'none',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-              position: 'relative',
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = budgetAlerts.length > 0 ? 'rgba(239, 68, 68, 0.15)' : 'rgba(94, 109, 132, 0.08)'}
-            onMouseLeave={(e) => e.currentTarget.style.background = budgetAlerts.length > 0 ? 'rgba(239, 68, 68, 0.1)' : 'transparent'}
           >
-            <Bell size={18} />
+            <Bell size={20} color="#fff" />
             {budgetAlerts.length > 0 && (
               <span
+                className="notif-count"
                 style={{
                   position: 'absolute',
-                  top: '-4px',
-                  right: '-4px',
-                  minWidth: '18px',
-                  height: '18px',
-                  borderRadius: '999px',
-                  background: 'var(--danger)',
-                  color: '#fff',
-                  fontSize: '0.8rem',
-                  fontWeight: '700',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '0 4px',
-                  lineHeight: '1',
+                  top: '-6px',
+                  right: '-6px',
                 }}
               >
                 {budgetAlerts.length}
