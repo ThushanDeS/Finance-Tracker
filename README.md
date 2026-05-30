@@ -29,7 +29,7 @@ A full-stack web application built with React, Node.js, and MongoDB Atlas to tra
    ```bash
    npm install
    ```
-3. Update the `.env` file with your MongoDB URI:
+3. Update the `.env` file with your backend credentials:
    ```env
    MONGODB_URI=your_mongodb_atlas_uri_here
    JWT_SECRET=your_secret_key
@@ -39,6 +39,14 @@ A full-stack web application built with React, Node.js, and MongoDB Atlas to tra
    ```bash
    npm run dev
    ```
+
+### Credentials
+The application does not ship with a shared login. Create your own user account through the registration page or the `/api/auth/register` endpoint, then log in with that email and password.
+
+The backend also needs these environment credentials in `backend/.env`:
+- `MONGODB_URI`: your MongoDB Atlas connection string
+- `JWT_SECRET`: a strong secret used to sign authentication tokens
+- `PORT`: the backend port, usually `5000`
 
 ### 3. Frontend Setup
 1. Navigate to the `frontend` directory.
